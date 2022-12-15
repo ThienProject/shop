@@ -1,0 +1,28 @@
+<p id="notice" style="color: green"><%= notice %></p>
+<h1>Books</h1>
+<div id="books">
+  <div class = "row row-cols-3 row-cols-md-3 g-4">
+    <% @books.each do |book| %>
+      <%# <%= render book %> 
+     <div class = 'col'>
+        <div class="card">
+          <% if book.image.attached? %>
+          <p><%= image_tag book.image, class: 'card-img-top' %></p>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= book.title %></h5>
+            <p class="card-text"><%= book.author %></p>
+            <%= link_to "Show this book", book, class: 'btn btn-primary' %>
+          </div>
+        </div>
+     </div>
+    <% end %>
+  </div>
+</div>
+<% if user_login %>
+  <%= link_to "New book", new_book_path %>
+<% end %>
+
+
+
+
